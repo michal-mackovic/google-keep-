@@ -1,11 +1,16 @@
+// Select Elements
 const keepForm = document.getElementById('keep-form');
 const notesGrid = document.getElementById('notes-display-grid');
+const searchBar = document.getElementById('search-bar');
+const noteTitle = document.getElementById('note-title');
+const noteText = document.getElementById('note-text');
 
+// 1. ADD NOTE LOGIC
 keepForm.addEventListener('submit', (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Stop page refresh
 
-    const titleValue = document.getElementById('note-title').value;
-    const textValue = document.getElementById('note-text').value;
+    const titleValue = noteTitle.value;
+    const textValue = noteText.value;
 
     if (titleValue || textValue) {
         createNoteCard(titleValue, textValue);
@@ -13,14 +18,34 @@ keepForm.addEventListener('submit', (event) => {
     }
 });
 
+// 2. CREATE NOTE CARD FUNCTION
 function createNoteCard(title, text) {
     const card = document.createElement('div');
     card.classList.add('note-card');
 
+    // We use template literals to build the HTML for the note
     card.innerHTML = `
-        <div style="font-weight: bold; margin-bottom: 8px;">${title}</div>
-        <div>${text}</div>
+        <div class="note-title-display">${title}</div>
+        <div class="note-text-display">${text}</div>
     `;
 
-    notesGrid.appendChild(card);
+    notesGrid.prepend(card); // Newest notes appear at the top
 }
+
+// 3. SEARCH/FILTER LOGIC
+searchBar.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+    const allNotes = document.querySelectorAll('.note-card');
+
+    allNotes.forEach(note => {
+        const title = note.querySelector('.note-title-display').innerText.toLowerCase();
+        const text = note.querySelector('.note-text-display').innerText.toLowerCase();
+        
+        // If query matches title OR text, show it; otherwise hide it
+        if (title.includes(query) || text.includes(query)) {
+            note.style.display = "block";
+        } else {
+            note.style.display = "none";
+        }
+    });
+});
