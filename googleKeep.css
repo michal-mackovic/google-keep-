@@ -1,33 +1,72 @@
 :root {
-    --google-gray: #f1f3f4;
-    --border-color: #e0e0e0;
-    --keep-yellow: #fbbc04;
+    --bg-color: #ffffff;
+    --header-border: #e0e0e0;
+    --search-bg: #f1f3f4;
+    --text-main: #202124;
+    --shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 2px 6px 2px rgba(60,64,67,0.149);
 }
 
 body {
-    font-family: 'Open Sans', Roboto, Arial, sans-serif;
-    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
     margin: 0;
+    color: var(--text-main);
 }
 
+/* Header & Search */
 .header {
-    padding: 8px 15px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--border-color);
+    justify-content: space-between;
+    padding: 8px 15px;
+    border-bottom: 1px solid var(--header-border);
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 100;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
     gap: 10px;
+    min-width: 150px;
+}
+
+.product-name {
     font-size: 22px;
     color: #5f6368;
 }
 
+.search-container {
+    flex-grow: 0.6;
+    display: flex;
+    justify-content: center;
+}
+
+#search-bar {
+    width: 100%;
+    max-width: 720px;
+    height: 46px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--search-bg);
+    font-size: 16px;
+}
+
+#search-bar:focus {
+    background-color: white;
+    box-shadow: 0 1px 1px 0 rgba(65,69,73,0.3), 0 1px 3px 1px rgba(65,69,73,0.15);
+    outline: none;
+}
+
+.header-spacer { min-width: 150px; }
+
+/* Note Input Area */
 #input-area {
     margin: 32px auto;
-    width: 100%;
+    width: 90%;
     max-width: 600px;
 }
 
@@ -36,7 +75,8 @@ body {
     flex-direction: column;
     padding: 10px 15px;
     border-radius: 8px;
-    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
+    border: 1px solid var(--header-border);
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
 }
 
 #keep-form input, #keep-form textarea {
@@ -44,9 +84,13 @@ body {
     outline: none;
     font-size: 1rem;
     padding: 10px 0;
+    resize: none;
 }
 
-#note-title { font-weight: bold; }
+#note-title {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
 
 .form-actions {
     display: flex;
@@ -57,25 +101,44 @@ body {
     background: none;
     border: none;
     padding: 8px 24px;
-    font-weight: bold;
+    font-weight: 500;
     cursor: pointer;
     border-radius: 4px;
+    color: #5f6368;
 }
 
 #submit-btn:hover { background-color: rgba(0,0,0,0.05); }
 
+/* Grid for stored notes */
 #notes-display-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 16px;
     padding: 20px;
-    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .note-card {
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--header-border);
     border-radius: 8px;
-    width: 240px;
-    padding: 12px;
+    padding: 15px;
+    transition: box-shadow 0.2s;
     word-wrap: break-word;
+    height: fit-content;
+}
+
+.note-card:hover {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.note-title-display {
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.note-text-display {
+    font-size: 1rem;
+    color: #3c4043;
 }
