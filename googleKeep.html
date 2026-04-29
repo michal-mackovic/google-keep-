@@ -1,32 +1,41 @@
 <!DOCTYPE html>
+<html lang="en"><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Keep Clone</title>
     <link rel="stylesheet" href="googleKeep.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header class="header">
         <div class="logo-container">
-            <img src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" alt="logo">
+            <img src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" alt="logo" width="40">
             <span class="product-name">Keep</span>
         </div>
+
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search">
+        </div>
+        
+        <div class="header-spacer"></div>
     </header>
 
     <main>
         <section id="input-area">
             <form id="keep-form">
                 <input type="text" id="note-title" placeholder="Title" autocomplete="off">
-                <textarea id="note-text" placeholder="Take a note..."></textarea>
+                <textarea id="note-text" placeholder="Take a note..." rows="1"></textarea>
                 <div class="form-actions">
                     <button type="submit" id="submit-btn">Close</button>
                 </div>
             </form>
         </section>
 
-        <div id="notes-display-grid"></div>
+        <div id="notes-display-grid">
+            </div>
     </main>
 
     <script src="googleKeep.js"></script>
