@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f1f3f4;
+    color: #202124;
+}
+
+/*  HEADER */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 100;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 150px;
+}
+
+.product-name {
+    font-size: 22px;
+    color: #5f6368;
+}
+
+.search-container {
+    flex-grow: 0.6;
+    display: flex;
+    justify-content: center;
+}
+
+#search-bar {
+    width: 100%;
+    max-width: 720px;
+    height: 46px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f1f3f4;
+    font-size: 16px;
+}
+
+#search-bar:focus {
+    background-color: white;
+    box-shadow: 0 1px 1px rgba(65,69,73,0.3), 0 1px 3px rgba(65,69,73,0.15);
+    outline: none;
+}
+
+.header-spacer {
+    min-width: 150px;
+}
+
+/* LAYOUT  */
+
+.app-container {
+    display: flex;
+}
+
+/* SIDEBAR  */
+
+.sidebar {
+    width: 240px;
+    padding-top: 10px;
+    background-color: #fff;
+    height: calc(100vh - 60px);
+}
+
+.menu-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 0 25px 25px 0;
+    color: #5f6368;
+    font-weight: 500;
+}
+
+.menu-item:hover {
+    background-color: #e8eaed;
+}
+
+.menu-item.active {
+    background-color: #feefc3;
+    color: #202124;
+}
+
+/* MAIN */
+
+.main-content {
+    flex-grow: 1;
+}
+
+/* Top bar */
+.topbar {
+    background-color: #fff;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.topbar h1 {
+    font-size: 20px;
+    color: #202124;
+}
+
+/* Notes grid */
+.notes-container {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+/* Note card */
+.note {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.note:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.note h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #202124;
+}
+
+.note p {
+    font-size: 14px;
+    color: #5f6368;
+}
