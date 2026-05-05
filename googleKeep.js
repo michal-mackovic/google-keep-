@@ -1,11 +1,11 @@
-// Select Elements
+/* Select Elements */
 const keepForm = document.getElementById('keep-form');
 const notesGrid = document.getElementById('notes-display-grid');
 const searchBar = document.getElementById('search-bar');
 const noteTitle = document.getElementById('note-title');
 const noteText = document.getElementById('note-text');
 
-// 1. ADD NOTE LOGIC
+/* ADD NOTE LOGIC */
 keepForm.addEventListener('submit', (event) => {
     event.preventDefault(); // Stop page refresh
 
@@ -18,7 +18,7 @@ keepForm.addEventListener('submit', (event) => {
     }
 });
 
-// 2. CREATE NOTE CARD FUNCTION
+/* CREATE NOTE CARD FUNCTION */
 function createNoteCard(title, text) {
     const card = document.createElement('div');
     card.classList.add('note-card');
@@ -32,7 +32,7 @@ function createNoteCard(title, text) {
     notesGrid.prepend(card); // Newest notes appear at the top
 }
 
-// 3. SEARCH/FILTER LOGIC
+/* SEARCH/FILTER LOGIC */
 searchBar.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase();
     const allNotes = document.querySelectorAll('.note-card');
@@ -41,7 +41,7 @@ searchBar.addEventListener('input', (e) => {
         const title = note.querySelector('.note-title-display').innerText.toLowerCase();
         const text = note.querySelector('.note-text-display').innerText.toLowerCase();
         
-        // If query matches title OR text, show it; otherwise hide it
+        /* If query matches title OR text, show it; otherwise hide it */
         if (title.includes(query) || text.includes(query)) {
             note.style.display = "block";
         } else {
