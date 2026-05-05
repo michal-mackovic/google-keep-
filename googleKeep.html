@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en"><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,20 +22,33 @@
         <div class="header-spacer"></div>
     </header>
 
-    <main>
-        <section id="input-area">
-            <form id="keep-form">
-                <input type="text" id="note-title" placeholder="Title" autocomplete="off">
-                <textarea id="note-text" placeholder="Take a note..." rows="1"></textarea>
-                <div class="form-actions">
-                    <button type="submit" id="submit-btn">Close</button>
-                </div>
-            </form>
-        </section>
+    <div class="app-container">
 
-        <div id="notes-display-grid">
-            </div>
-    </main>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="menu-item active">Notes</div>
+            <div class="menu-item">Reminders</div>
+            <div class="menu-item">Edit labels</div>
+            <div class="menu-item">Archive</div>
+            <div class="menu-item">Trash</div>
+        </aside>
+
+        <!-- Main obsah -->
+        <main class="main-content">
+            <section id="input-area">
+                <form id="keep-form">
+                    <input type="text" id="note-title" placeholder="Title" autocomplete="off">
+                    <textarea id="note-text" placeholder="Take a note..." rows="1"></textarea>
+                    <div class="form-actions">
+                        <button type="submit" id="submit-btn">Close</button>
+                    </div>
+                </form>
+            </section>
+
+            <div id="notes-display-grid"></div>
+        </main>
+
+    </div>
 
     <script src="googleKeep.js"></script>
 </body>
