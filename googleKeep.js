@@ -49,3 +49,19 @@ searchBar.addEventListener('input', (e) => {
         }
     });
 });
+
+/*SIDEBAR /BUTTONS */
+
+const menuItems = document.querySelectorAll(".menu-item");
+
+menuItems.forEach(function(item) {
+  item.addEventListener("click", function() {
+    const text = item.textContent;
+
+    if (text === "Notes") window.location.href = "/notes";
+    if (text === "Reminders") window.location.href = "/reminders";
+    if (text === "Edit labels") window.location.href = "/edit-labels"
+    if (text === "Archive") window.location.href = "/archive";
+    if (text === "Trash") window.location.href = "/trash";
+  });
+});
