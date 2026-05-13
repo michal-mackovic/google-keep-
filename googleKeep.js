@@ -1,13 +1,13 @@
-/* Select Elements */
+/* SELECT ELEMENTS */
 const keepForm = document.getElementById('keep-form');
 const notesGrid = document.getElementById('notes-display-grid');
 const searchBar = document.getElementById('search-bar');
 const noteTitle = document.getElementById('note-title');
 const noteText = document.getElementById('note-text');
 
-/* ADD NOTE LOGIC */
+/* NOTE FUNKCNOST */
 keepForm.addEventListener('submit', (event) => {
-    event.preventDefault(); // Stop page refresh
+    event.preventDefault();
 
     const titleValue = noteTitle.value;
     const textValue = noteText.value;
@@ -23,16 +23,15 @@ function createNoteCard(title, text) {
     const card = document.createElement('div');
     card.classList.add('note-card');
 
-    // We use template literals to build the HTML for the note
     card.innerHTML = `
         <div class="note-title-display">${title}</div>
         <div class="note-text-display">${text}</div>
     `;
 
-    notesGrid.prepend(card); // Newest notes appear at the top
+    notesGrid.prepend(card); 
 }
 
-/* SEARCH/FILTER LOGIC */
+/* SEARCH/FILTER */
 searchBar.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase();
     const allNotes = document.querySelectorAll('.note-card');
@@ -50,12 +49,12 @@ searchBar.addEventListener('input', (e) => {
     });
 });
 
-/*SIDEBAR /BUTTONS */
+/*SIDEBAR BUTTONS */
 
 const menuItems = document.querySelectorAll(".menu-item");
 
 menuItems.forEach(function(item) {
-  item.addEventListener("click", function() {
+    item.addEventListener("click", function() {
     const text = item.textContent;
 
     if (text === "Notes") window.location.href = "/notes";
@@ -63,5 +62,5 @@ menuItems.forEach(function(item) {
     if (text === "Edit labels") window.location.href = "/edit-labels"
     if (text === "Archive") window.location.href = "/archive";
     if (text === "Trash") window.location.href = "/trash";
-  });
+    });
 });
