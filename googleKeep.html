@@ -4,52 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Keep Clone</title>
+
     <link rel="stylesheet" href="googleKeep.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
+    <!-- header -->
     <header class="header">
+
+        <!-- logo -->
         <div class="logo-container">
-            <img src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" alt="logo" width="40">
+            <img src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" width="40">
             <span class="product-name">Keep</span>
         </div>
 
+        <!-- search -->
         <div class="search-container">
             <input type="text" id="search-bar" placeholder="Search">
         </div>
-        
+
         <div class="header-spacer"></div>
+
     </header>
 
     <div class="app-container">
 
-        <!-- Sidebar -->
+        <!-- sidebar -->
         <aside class="sidebar">
             <div class="menu-item active">Notes</div>
             <div class="menu-item">Reminders</div>
             <div class="menu-item">Edit labels</div>
-            <div class="menu-item">Archive</div>
             <div class="menu-item">Trash</div>
         </aside>
 
-        <!-- Main obsah -->
+        <!-- main -->
         <main class="main-content">
+
+            <!-- input -->
             <section id="input-area">
+
                 <form id="keep-form">
+
                     <input type="text" id="note-title" placeholder="Title" autocomplete="off">
-                    <textarea id="note-text" placeholder="Take a note..." rows="1"></textarea>
+
+                    <textarea id="note-text" placeholder="Take a note..." rows="2"></textarea>
+
                     <div class="form-actions">
-                        <button type="submit" id="submit-btn">Close</button>
+                        <button type="submit" id="submit-btn">Save</button>
                     </div>
+
                 </form>
+
             </section>
 
+            <!-- notes -->
             <div id="notes-display-grid"></div>
+
         </main>
 
     </div>
 
-    <script src="googleKeep.js"></script>
 </body>
 </html>
+
+<script src="googleKeep.js"></script>
