@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash - Google Keep Clone</title>
+
+    <link rel="stylesheet" href="trash.css">
+    <script src="trash.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="logo-container">
+            <img src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" width="40">
+            <span class="product-name">Keep</span>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search trash">
+        </div>
+
+        <div class="header-spacer"></div>
+
+    </header>
+
+    <div class="app-container">
+
+        <aside class="sidebar">
+            <div class="menu-item">Notes</div>
+            <div class="menu-item">Reminders</div>
+            <div class="menu-item">Edit labels</div>
+            <div class="menu-item active">Trash</div>
+        </aside>
+
+        <main class="main-content">
+
+            <div class="trash-grid" id="trash-grid"></div>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
