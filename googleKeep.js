@@ -1,11 +1,11 @@
-/* SELECT ELEMENTS */
+// elements
 const keepForm = document.getElementById('keep-form');
 const notesGrid = document.getElementById('notes-display-grid');
 const searchBar = document.getElementById('search-bar');
 const noteTitle = document.getElementById('note-title');
 const noteText = document.getElementById('note-text');
 
-/* NOTE FUNKCNOST */
+// save note
 keepForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -13,34 +13,64 @@ keepForm.addEventListener('submit', (event) => {
     const textValue = noteText.value;
 
     if (titleValue || textValue) {
-        createNoteCard(titleValue, textValue);
+        createNote(titleValue, textValue);
         keepForm.reset();
     }
 });
 
-/* CREATE NOTE CARD FUNCTION */
-function createNoteCard(title, text) {
+// create note
+let notes = JSON.parse(localStorage.getItem("notes")) || []
+
+function createCard(note, index) {
     const card = document.createElement('div');
     card.classList.add('note-card');
 
     card.innerHTML = `
-        <div class="note-title-display">${title}</div>
-        <div class="note-text-display">${text}</div>
+        <div class="note-title-display">${note.title}</div>
+        <div class="note-text-display">${note.text}</div>
+        <div class="note-actions">
+            <button class="delete-btn">🗑</button>
+        </div>
     `;
 
-    notesGrid.prepend(card); 
+    const deleteBtn = card.querySelector('.delete-btn');
+    deleteBtn.addEventListener('click', () => {
+        notes[index].deleted = true;
+        localStorage.setItem('notes', JSON.stringify(notes));
+        card.remove();
+    });
+
+    return card;
 }
 
-/* SEARCH/FILTER */
+// načítanie uložených notes
+notes.forEach((note, index) => {
+    if (note.deleted == false) {
+        notesGrid.prepend(createCard(note, index));
+    }
+});
+
+function createNote(title, text) {
+    notes.push({
+        title: title,
+        text: text,
+        deleted: false
+    });
+    localStorage.setItem('notes', JSON.stringify(notes));
+
+    const index = notes.length - 1;
+    notesGrid.prepend(createCard(notes[index], index));
+}
+
+// search notes
 searchBar.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase();
-    const allNotes = document.querySelectorAll('.note-card');
+    const noteCards = document.querySelectorAll('.note-card');
 
-    allNotes.forEach(note => {
+    noteCards.forEach(note => {
         const title = note.querySelector('.note-title-display').innerText.toLowerCase();
         const text = note.querySelector('.note-text-display').innerText.toLowerCase();
-        
-        /* If query matches title OR text, show it; otherwise hide it */
+
         if (title.includes(query) || text.includes(query)) {
             note.style.display = "block";
         } else {
@@ -49,18 +79,17 @@ searchBar.addEventListener('input', (e) => {
     });
 });
 
-/*SIDEBAR BUTTONS */
-
+// sidebar buttons
 const menuItems = document.querySelectorAll(".menu-item");
 
 menuItems.forEach(function(item) {
     item.addEventListener("click", function() {
-    const text = item.textContent;
+        const text = item.textContent;
 
-    if (text === "Notes") window.location.href = "/notes";
-    if (text === "Reminders") window.location.href = "/reminders";
-    if (text === "Edit labels") window.location.href = "/edit-labels"
-    if (text === "Archive") window.location.href = "/archive";
-    if (text === "Trash") window.location.href = "/trash";
+        if (text === "Notes") window.location.href = "/notes";
+        if (text === "Reminders") window.location.href = "/reminders";
+        if (text === "Edit labels") window.location.href = "/edit-labels";
+        if (text === "Archive") window.location.href = "/archive";
+        if (text === "Trash") window.location.href = "/trash/trash.html";
     });
 });
